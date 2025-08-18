@@ -1,0 +1,7 @@
+Excelidraw is a colloborative canvas app wher you can create diagrams with the help of the tools that are provided.
+
+Stpes for the project 
+
+1. npm install -g pnpm 
+pnpm is another package manager like npm, bun, yarn. 
+

@@ -28,4 +28,4 @@ this is the boiler plate for the application
 6. initialize the package.json in both the backends
 npm init -y
 
-7. initialize the tsconfig
+7. initialize the tsconfig, there is already a base typescript config in the packages, extend it in the backends

@@ -100,3 +100,4 @@ create the
 
 20. create the db package 
 21. using the db package in the http layer
+postgres  + prisma

@@ -53,3 +53,5 @@ add the dependency in for the ts-config in the package.json
 13. install the dependencies 
 pnpm add express @types/express
 pnpm add ws @types/ws
+
+write the boiler plate for both the servers

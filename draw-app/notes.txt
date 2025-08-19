@@ -21,3 +21,6 @@ b. pnpm run dev
 IDEAL WAY (test driven development): first write the tests -> then write the backend -> then write the frontend 
 
 5. create two backend repos. http-server, ws-backend
+
+the tests are written in packages
+this is the boiler plate for the application

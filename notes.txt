@@ -9,3 +9,6 @@ pnpm is better than npm.
 facebook intoduced yarn for getting rid of central dependencies as the node modules take too much space.
 
 2. initialize a new turborepo (monorepo)
+npx create-turbo@latest
+use pnpm as package manager
+

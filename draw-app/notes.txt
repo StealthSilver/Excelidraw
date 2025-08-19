@@ -88,3 +88,10 @@ also add the tsconfig as the dev dependency
 
 then in the src/config add the JWT_SECRET and also use the env variable 
 for the process.env install pnpm add @types/node
+
+create the  
+ "exports": {
+    "./config": "./src/index.ts"
+  }, in package.json 
+
+  import in both the backends

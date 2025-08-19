@@ -32,6 +32,9 @@ npm init -y
 add the base typscript config in both the backends
 
 for npm use *, for pnpm use workspace:*
+add the dependency in for the ts-config in the package.json
+* better to add as a devDependency as it is only required with the dev time
 
 8. go to the root folder and do a pnpm install again
+
 9. adding a build, dev and start script to both the projects

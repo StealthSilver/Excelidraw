@@ -97,3 +97,6 @@ create the
   import in both the backends
 
 19. now create the zod validations in the common folder in packages so that it can be used by the both fronend and the backend 
+
+20. create the db package 
+21. using the db package in the http layer

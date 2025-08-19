@@ -17,6 +17,7 @@ app.post("/signup", (req,res) => {
         return res.json({
             message: "Incorrect Input"
         })
+        return;
     }
     res.json({
         userId: "123"

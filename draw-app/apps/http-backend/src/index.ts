@@ -2,6 +2,7 @@ import express from "express";
 import jwt from "jsonwebtoken";
 import { JWT_SECRET } from "@repo/backend-common/config";
 import { middleware } from "./middleware";
+import {CreateUserSchema} from "@repo/common/types"
 
 const app = express();
 const PORT = 3001;
@@ -9,6 +10,14 @@ const PORT = 3001;
 app.use(express.json());
 
 app.post("/signup", (req,res) => {
+
+    const data = CreateUserSchema.safeParse(req.body);
+
+    if(!data.success){
+        return res.json({
+            message: "Incorrect Input"
+        })
+    }
     res.json({
         userId: "123"
     })

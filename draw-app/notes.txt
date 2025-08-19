@@ -74,3 +74,4 @@ wss.on('connection', function connection(ws) {
 ** CREATING A CLI FOR THE INITIALIZING A MONOREPO WITH ALL THE BOILERPLATE UNTIL HERE
 
 14. writing the signup, signin and create-room endpoints
+pnpm add jsonwebtoken @types/jsonwebtoken

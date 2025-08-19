@@ -52,3 +52,4 @@ add the dependency in for the ts-config in the package.json
 12. create the src/index.ts in the ws backend
 13. install the dependencies 
 pnpm add express @types/express
+pnpm add ws @types/ws

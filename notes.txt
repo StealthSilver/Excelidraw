@@ -17,3 +17,7 @@ a. pnpm install
 b. pnpm run dev
 
 4. as for excelidraw we just need a single frontend, delete the docs frontend and keep the web one
+
+IDEAL WAY (test driven development): first write the tests -> then write the backend -> then write the frontend 
+
+5. create two backend repos. http-server, ws-backend

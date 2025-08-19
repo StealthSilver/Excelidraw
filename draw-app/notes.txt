@@ -75,3 +75,7 @@ wss.on('connection', function connection(ws) {
 
 14. writing the signup, signin and create-room endpoints
 pnpm add jsonwebtoken @types/jsonwebtoken
+
+15. creating the middleare and gating hte room endpoint withe the middleware 
+16. using the url and the jwt to check the user in the ws-backend 
+17. getting the jwt_secret in a common place

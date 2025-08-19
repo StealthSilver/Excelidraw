@@ -33,3 +33,4 @@ add the base typscript config in both the backends
 
 for npm use *, for pnpm use workspace:*
 
+8. go to the root folder and do a pnpm install again

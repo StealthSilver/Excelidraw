@@ -26,3 +26,6 @@ the tests are written in packages
 this is the boiler plate for the application
 
 6. initialize the package.json in both the backends
+npm init -y
+
+7. initialize the tsconfig

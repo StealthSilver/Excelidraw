@@ -30,3 +30,6 @@ npm init -y
 
 7. initialize the tsconfig, there is already a base typescript config in the packages, extend it in the backends
 add the base typscript config in both the backends
+
+for npm use *, for pnpm use workspace:*
+

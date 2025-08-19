@@ -8,7 +8,9 @@ const PORT = 3001;
 app.use(express.json());
 
 app.post("/signup", (req,res) => {
-
+    res.json({
+        userId: "123"
+    })
 })
 
 app.post("/signin", (req,res) => {
@@ -24,8 +26,10 @@ res.json({
 })
 })
 
-app.post("/room", (req,res) => {
-    
+app.post("/room",middleware, (req,res) => {
+    res.json({
+        roomId: "123"
+    })
 })
 
 

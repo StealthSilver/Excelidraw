@@ -5,3 +5,5 @@ Stpes for the project
 1. npm install -g pnpm 
 pnpm is another package manager like npm, bun, yarn. 
 
+pnpm is better than npm.
+facebook intoduced yarn for getting rid of central dependencies as the node modules take too much space.

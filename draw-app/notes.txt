@@ -95,3 +95,5 @@ create the
   }, in package.json 
 
   import in both the backends
+
+19. now create the zod validations in the common folder in packages so that it can be used by the both fronend and teh backend

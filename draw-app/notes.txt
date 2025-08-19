@@ -38,9 +38,9 @@ add the dependency in for the ts-config in the package.json
 8. go to the root folder and do a pnpm install again
 
 9. adding a build, dev and start script to both the projects
- "build": "tsc -b",
-    "dev": "npm run build && npm run start",
-    "start": "node ./dist/index.js"
+"build": "tsc -b", -> building the project int eh CI/CD pipeline
+"dev": "npm run build && npm run start", -> for local developemnt
+"start": "node ./dist/index.js" -> starting the application on the server
 
 10. add the compiler options in tsconfigs of both backends 
 "compilerOptions": {

@@ -15,3 +15,5 @@ use pnpm as package manager
 3. go in the draw-app directory and run 
 a. pnpm install 
 b. pnpm run dev
+
+4. as for excelidraw we just need a single frontend, delete the docs frontend and keep the web one

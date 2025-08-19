@@ -12,3 +12,6 @@ facebook intoduced yarn for getting rid of central dependencies as the node modu
 npx create-turbo@latest
 use pnpm as package manager
 
+3. go in the draw-app directory and run 
+a. pnpm install 
+b. pnpm run dev

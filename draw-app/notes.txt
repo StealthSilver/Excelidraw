@@ -81,3 +81,10 @@ pnpm add jsonwebtoken @types/jsonwebtoken
 17. getting the jwt_secret in a common place
 
 18. create the backend-common in packages
+create the package.json and the tsconfig.json 
+
+add the extends in tsconfig and name teh package @repo/common 
+also add the tsconfig as the dev dependency 
+
+then in the src/config add the JWT_SECRET and also use the env variable 
+for the process.env install pnpm add @types/node

@@ -24,3 +24,5 @@ IDEAL WAY (test driven development): first write the tests -> then write the bac
 
 the tests are written in packages
 this is the boiler plate for the application
+
+6. initialize the package.json in both the backends

@@ -116,5 +116,8 @@ postgres  + prisma
 
 complete the http backend 
 
-import the db package inteh package.json and as a dependency not a adevDependency as it will be used at the runtime
+import the db package in the package.json and as a dependency not a adevDependency as it will be used at the runtime
 
+use the bcrypt library for the hashed passwords 
+
+22. the chat room logic begins in the ws-backend

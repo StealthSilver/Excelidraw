@@ -25,16 +25,17 @@ app.post("/signup", async (req, res) => {
   }
 
   try {
-    await prismaClient.user.create({
+    const user = await prismaClient.user.create({
       data: {
         email: parsedData.data?.username,
+        // todo hash the password using the bcrypt library
         password: parsedData.data.password,
         name: parsedData.data.name,
       },
     });
 
     res.json({
-      userId: "123",
+      userId: user.id,
     });
   } catch (e) {
     res.status(411).json({
@@ -43,20 +44,33 @@ app.post("/signup", async (req, res) => {
   }
 });
 
-app.post("/signin", (req, res) => {
-  const data = SigninSchema.safeParse(req.body);
-  if (!data.success) {
+app.post("/signin", async (req, res) => {
+  const parsedData = SigninSchema.safeParse(req.body);
+  if (!parsedData.success) {
     res.json({
       message: "Incorrect Inputs",
     });
     return;
   }
+  // todo compare the hashed passwords here
 
-  const userId = 1;
+  const user = await prismaClient.user.findFirst({
+    where: {
+      email: parsedData.data.username,
+      password: parsedData.data.password,
+    },
+  });
+
+  if (!user) {
+    res.status(403).json({
+      message: "not authorised",
+    });
+    return;
+  }
 
   const token = jwt.sign(
     {
-      userId,
+      userId: user?.id,
     },
     JWT_SECRET
   );
@@ -66,14 +80,24 @@ app.post("/signin", (req, res) => {
   });
 });
 
-app.post("/room", middleware, (req, res) => {
-  const data = CreateRoomSchema.safeParse(req.body);
-  if (!data.success) {
+app.post("/room", middleware, async (req, res) => {
+  const parsedData = CreateRoomSchema.safeParse(req.body);
+  if (!parsedData.success) {
     res.json({
       message: "Incorrect Inputs",
     });
     return;
   }
+
+  //@ts-ignore
+  const userId = req.userId;
+
+  await prismaClient.room.create({
+    data: {
+      slug: parsedData.data.name,
+      adminId: userId,
+    },
+  });
 
   res.json({
     roomId: "123",

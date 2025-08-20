@@ -150,3 +150,6 @@ const users = [
     ws: socket,
   },
 ];
+
+
+todos: authenticate all the necessary endpoints. use a queue for the db storage, rate limit the messages

@@ -12,14 +12,25 @@ app.use(express.json());
 
 app.post("/signup", (req,res) => {
 
-    const data = CreateUserSchema.safeParse(req.body);
+    const parsedData = CreateUserSchema.safeParse(req.body);
 
-    if(!data.success){
+    if(!parsedData.success){
         return res.json({
             message: "Incorrect Input"
         })
         return;
     }
+
+    prismaClient.user.create({
+        data:{
+            email : parsedData.data?.username,
+            password: parsedData.data.password,
+            name: parsedData.data.name
+        }
+       
+    })
+
+
     res.json({
         userId: "123"
     })

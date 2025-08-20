@@ -99,5 +99,12 @@ create the
 19. now create the zod validations in the common folder in packages so that it can be used by the both fronend and the backend 
 
 20. create the db package 
+create a new package db 
+a. pnpm install prisma 
+b. npx prisma init 
+
+
+
 21. using the db package in the http layer
 postgres  + prisma
+

@@ -116,3 +116,5 @@ postgres  + prisma
 
 complete the http backend 
 
+import the db package inteh package.json and as a dependency not a adevDependency as it will be used at the runtime
+

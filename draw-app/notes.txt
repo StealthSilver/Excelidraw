@@ -114,3 +114,5 @@ export prismaclient from the index.ts
 21. using the db package in the http layer
 postgres  + prisma
 
+complete the http backend 
+

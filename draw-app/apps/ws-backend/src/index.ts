@@ -28,11 +28,13 @@ wss.on("connection", function connection(ws, request) {
 
   const queryParams = new URLSearchParams(url.split("?")[1]);
   const token = queryParams.get("token") || "";
-  const userAuthenticated = checkUser(token);
+  const userId = checkUser(token);
 
-  if (!userAuthenticated) {
+  if (!userId) {
     ws.close();
   }
+
+  // allow the user to subscribe messages to multiple rooms, allow the user to send messages to multiple rooms
 
   ws.on("message", function message(data) {
     ws.send("pong");

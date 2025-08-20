@@ -1,3 +1,5 @@
+"use client"
+
 export function AuthPage({isSignin}: {
 isSignin: boolean
 }){
@@ -6,7 +8,7 @@ isSignin: boolean
             <input type="text" placeholder="Email" />
             <input type="password" placeholder="Password" />
             <button onClick={() => {
-                
+
             }}>{isSignin ? "Sign in" : "Sign up"}</button>
         </div>
     </div>

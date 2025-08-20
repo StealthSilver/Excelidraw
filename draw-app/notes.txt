@@ -107,6 +107,7 @@ create the user, char, room schema
 get a db url from local of from cloud , paste in the .env file
 
 npx prisma migrate dev --name init_schema -> to migrate the db (slower on a cloud db)
+npx prisma generate -> generating the prisma client
 
 21. using the db package in the http layer
 postgres  + prisma

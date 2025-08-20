@@ -10,7 +10,7 @@ const PORT = 3001;
 
 app.use(express.json());
 
-app.post("/signup", (req,res) => {
+app.post("/signup", async (req,res) => {
 
     const parsedData = CreateUserSchema.safeParse(req.body);
 
@@ -21,19 +21,27 @@ app.post("/signup", (req,res) => {
         return;
     }
 
-    prismaClient.user.create({
-        data:{
-            email : parsedData.data?.username,
-            password: parsedData.data.password,
-            name: parsedData.data.name
-        }
-       
-    })
+    try{
+        await prismaClient.user.create({
+            data:{
+                email : parsedData.data?.username,
+                password: parsedData.data.password,
+                name: parsedData.data.name
+            }
+           
+        })
+    
+    
+        res.json({
+            userId: "123"
+        })
+    }catch(e){
+        res.status(411).json({
+            message:"user already exists with this username"
+        })
+    }
 
-
-    res.json({
-        userId: "123"
-    })
+  
 })
 
 app.post("/signin", (req,res) => {

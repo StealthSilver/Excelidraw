@@ -12,7 +12,7 @@ model User {
   id       String  @id @default(uuid())
   email    String
   password String
-  name     String? // not good to ask the name and the photo at eth signup time
+  name     String? // not good to ask the name and the photo at the signup time
   photo    String?
   rooms    Room[]
   Chat     Chat[]

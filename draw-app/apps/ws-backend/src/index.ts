@@ -1,4 +1,4 @@
-import { WebSocketServer } from "ws";
+import { WebSocketServer, WebSocket } from "ws";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { JWT_SECRET } from "@repo/backend-common/config";
 
@@ -39,13 +39,33 @@ wss.on("connection", function connection(ws, request) {
   const token = queryParams.get("token") || "";
   const userId = checkUser(token);
 
-  if (!userId) {
+  if (userId == null) {
     ws.close();
+    return null;
   }
 
   // allow the user to subscribe messages to multiple rooms, allow the user to send messages to multiple rooms
 
+  users.push({
+    userId,
+    rooms: [],
+    ws,
+  });
+
   ws.on("message", function message(data) {
-    ws.send("pong");
+    const parsedData = JSON.parse(data as unknown as string);
+
+    if (parsedData.type == +"join_room") {
+      const user = users.find((x) => x.ws === ws);
+      user?.rooms.push(parsedData.roomId);
+    }
+
+    if (parsedData.type === "leave_room") {
+      const user = users.find((x) => x.ws === ws);
+      if (!user) {
+        return;
+      }
+      user.rooms = user?.rooms.filter((x) => x === parsedData.room);
+    }
   });
 });

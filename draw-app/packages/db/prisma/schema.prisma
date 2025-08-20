@@ -15,6 +15,7 @@ model User {
   name     String
   photo    String
   rooms    Room[]
+  Chat     Chat[]
 }
 
 model Room {
@@ -23,6 +24,7 @@ model Room {
   createAt DateTime @default(now())
   adminId  String
   admin    User     @relation(fields: [adminId], references: [id])
+  Chat     Chat[]
 }
 
 model Chat {
@@ -30,4 +32,6 @@ model Chat {
   roomId  Int
   message String
   userId  String
+  room    Room   @relation(fields: [roomId], references: [id])
+  user    User   @relation(fields: [userId], references: [id])
 }

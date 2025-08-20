@@ -120,4 +120,4 @@ import the db package in the package.json and as a dependency not a adevDependen
 
 use the bcrypt library for the hashed passwords 
 
-22. the chat room logic begins in the ws-backend
+22. the chat room logic begins, in the ws-backend

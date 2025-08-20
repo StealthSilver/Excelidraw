@@ -125,3 +125,8 @@ use the bcrypt library for the hashed passwords
 room management, broadcast messages
 
 state management on the backend
+
+most backends we have created until now was stateless, there was no need to store any state. all the comminication was done with the db.
+in this ws backend we have to manage the state. there needs to be a global variable for every user. this backend is statefull
+
+there are ways, redux for backend state management, singletons, global variable

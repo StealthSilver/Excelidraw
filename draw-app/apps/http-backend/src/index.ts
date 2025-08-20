@@ -1,5 +1,6 @@
 import express from "express";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
 import { JWT_SECRET } from "@repo/backend-common/config";
 import { middleware } from "./middleware";
 import {
@@ -21,15 +22,16 @@ app.post("/signup", async (req, res) => {
     return res.json({
       message: "Incorrect Input",
     });
-    return;
   }
 
   try {
+    // 🔹 hash the password before saving
+    const hashedPassword = await bcrypt.hash(parsedData.data.password, 10);
+
     const user = await prismaClient.user.create({
       data: {
-        email: parsedData.data?.username,
-        // todo hash the password using the bcrypt library
-        password: parsedData.data.password,
+        email: parsedData.data.username,
+        password: hashedPassword,
         name: parsedData.data.name,
       },
     });
@@ -52,25 +54,35 @@ app.post("/signin", async (req, res) => {
     });
     return;
   }
-  // todo compare the hashed passwords here
 
+  // 🔹 find user by email only
   const user = await prismaClient.user.findFirst({
     where: {
       email: parsedData.data.username,
-      password: parsedData.data.password,
     },
   });
 
   if (!user) {
-    res.status(403).json({
+    return res.status(403).json({
       message: "not authorised",
     });
-    return;
+  }
+
+  // 🔹 compare passwords using bcrypt
+  const isPasswordValid = await bcrypt.compare(
+    parsedData.data.password,
+    user.password
+  );
+
+  if (!isPasswordValid) {
+    return res.status(403).json({
+      message: "Invalid credentials",
+    });
   }
 
   const token = jwt.sign(
     {
-      userId: user?.id,
+      userId: user.id,
     },
     JWT_SECRET
   );
@@ -105,7 +117,7 @@ app.post("/room", middleware, async (req, res) => {
     });
   } catch (e) {
     res.status(411).json({
-      massage: "Room already exists with this name",
+      message: "Room already exists with this name",
     });
   }
 });

@@ -10,6 +10,7 @@ interface User {
   userId: string;
 }
 
+// state management using the global variable
 const users: User[] = [];
 
 function checkUser(token: string): string | null {

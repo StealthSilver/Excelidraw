@@ -25,7 +25,6 @@ app.post("/signup", async (req, res) => {
   }
 
   try {
-    // 🔹 hash the password before saving
     const hashedPassword = await bcrypt.hash(parsedData.data.password, 10);
 
     const user = await prismaClient.user.create({
@@ -55,7 +54,6 @@ app.post("/signin", async (req, res) => {
     return;
   }
 
-  // 🔹 find user by email only
   const user = await prismaClient.user.findFirst({
     where: {
       email: parsedData.data.username,
@@ -68,7 +66,6 @@ app.post("/signin", async (req, res) => {
     });
   }
 
-  // 🔹 compare passwords using bcrypt
   const isPasswordValid = await bcrypt.compare(
     parsedData.data.password,
     user.password

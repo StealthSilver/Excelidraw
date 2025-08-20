@@ -4,19 +4,19 @@ import { JWT_SECRET } from "@repo/backend-common/config";
 
 const wss = new WebSocketServer({ port: 8080 });
 
-function checkUser(token: string): boolean {
+function checkUser(token: string): string | null {
   const decoded = jwt.verify(token, JWT_SECRET);
 
   // the decoded can be a string or an object, early returning if its a string
   if (typeof decoded == "string") {
-    return false;
+    return null;
   }
 
   if (!decoded || !decoded.userId) {
-    return false;
+    return null;
   }
 
-  return true;
+  return decoded.userId;
 }
 
 wss.on("connection", function connection(ws, request) {
@@ -28,7 +28,11 @@ wss.on("connection", function connection(ws, request) {
 
   const queryParams = new URLSearchParams(url.split("?")[1]);
   const token = queryParams.get("token") || "";
-  const decoded = jwt.verify(token, JWT_SECRET);
+  const userAuthenticated = checkUser(token);
+
+  if (!userAuthenticated) {
+    ws.close();
+  }
 
   ws.on("message", function message(data) {
     ws.send("pong");

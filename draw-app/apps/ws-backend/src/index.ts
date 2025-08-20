@@ -4,6 +4,24 @@ import { JWT_SECRET } from "@repo/backend-common/config";
 
 const wss = new WebSocketServer({ port: 8080 });
 
+const users = [
+  {
+    userId: 1,
+    rooms: ["room1", "room2"],
+    ws: socket,
+  },
+  {
+    userId: 1,
+    rooms: ["room1", "room2"],
+    ws: socket,
+  },
+  {
+    userId: 1,
+    rooms: ["room1", "room2"],
+    ws: socket,
+  },
+];
+
 function checkUser(token: string): string | null {
   const decoded = jwt.verify(token, JWT_SECRET);
 

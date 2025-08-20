@@ -130,3 +130,23 @@ most backends we have created until now was stateless, there was no need to stor
 in this ws backend we have to manage the state. there needs to be a global variable for every user. this backend is statefull
 
 there are ways, redux for backend state management, singletons, global variable
+
+the state is all the users that connect and all the rooms. using hte global variable.
+
+const users = [
+  {
+    userId: 1,
+    rooms: ["room1", "room2"],
+    ws: socket,
+  },
+  {
+    userId: 1,
+    rooms: ["room1", "room2"],
+    ws: socket,
+  },
+  {
+    userId: 1,
+    rooms: ["room1", "room2"],
+    ws: socket,
+  },
+];

@@ -9,11 +9,13 @@ import {
   CreateRoomSchema,
 } from "@repo/common/types";
 import { prismaClient } from "@repo/db/client";
+import cors from "cors";
 
 const app = express();
 const PORT = 3001;
 
 app.use(express.json());
+app.use(cors());
 
 app.post("/signup", async (req, res) => {
   const parsedData = CreateUserSchema.safeParse(req.body);

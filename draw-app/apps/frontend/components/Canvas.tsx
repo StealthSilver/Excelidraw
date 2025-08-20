@@ -2,7 +2,7 @@ import { initDraw } from "../app/draw";
 import { useEffect, useRef, useState } from "react";
 import { IconButton } from "./IconButton";
 import { Circle, Pencil, RectangleHorizontalIcon } from "lucide-react";
-import { Game } from "../app/draw/game";
+import { Game } from "../app/draw/Game";
 
 export type Tool = "circle" | "rect" | "pencil";
 

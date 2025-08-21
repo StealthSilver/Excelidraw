@@ -166,5 +166,9 @@ to run locally a remote turborepo
 1. clone the repo 
 2. run pnpm install globally 
 3. start the db locally or on cloud
-4. create a fresh .env in db
-5. 
+4. create a fresh .env in db and fill the db credentials 
+5. migrate teh db (npx prisma migrate dev)
+6. generate the prisma client 
+7. start the http backend 
+8. start the ws backend 
+9. start the fronend

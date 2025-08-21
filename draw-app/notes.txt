@@ -155,3 +155,16 @@ backend complete
 todos: authenticate all the necessary endpoints. use a queue for the db storage, rate limit the messages
 
 get a quick landing page from lovable or bolt and add that to the page.tsx 
+
+
+
+
+-----------
+
+to run locally a remote turborepo
+
+1. clone the repo 
+2. run pnpm install globally 
+3. start the db locally or on cloud
+4. create a fresh .env in db
+5. 

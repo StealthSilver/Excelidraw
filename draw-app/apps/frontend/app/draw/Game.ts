@@ -1,4 +1,4 @@
-import { Tool } from "@/components/RoomCanvas";
+import { Tool } from "@/components/Canvas";
 import { getExistingShapes } from "./http";
 
 type Shape =
@@ -102,12 +102,12 @@ export class Game {
     });
   }
 
-  mouseDownHandler = (e: { clientX: number; clientY: number }) => {
+  mouseDownHandler = (e) => {
     this.clicked = true;
     this.startX = e.clientX;
     this.startY = e.clientY;
   };
-  mouseUpHandler = (e: { clientX: number; clientY: number }) => {
+  mouseUpHandler = (e) => {
     this.clicked = false;
     const width = e.clientX - this.startX;
     const height = e.clientY - this.startY;
@@ -148,7 +148,7 @@ export class Game {
       })
     );
   };
-  mouseMoveHandler = (e: { clientX: number; clientY: number }) => {
+  mouseMoveHandler = (e) => {
     if (this.clicked) {
       const width = e.clientX - this.startX;
       const height = e.clientY - this.startY;

@@ -172,3 +172,5 @@ to run locally a remote turborepo
 7. start the http backend 
 8. start the ws backend 
 9. start the fronend
+
+we can also locally install using docker
